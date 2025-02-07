@@ -1,1 +1,8 @@
-<p>images-list works!</p>
+<mat-list>
+    <div mat-subheader>Repositorios</div>
+    @for (repo of repositories; track repo) {
+        <mat-list-item>
+            <div matListItemTitle>{{repo}}</div>
+        </mat-list-item>
+    }
+</mat-list>
