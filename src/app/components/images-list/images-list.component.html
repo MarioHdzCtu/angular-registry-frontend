@@ -1,11 +1,12 @@
 <mat-list>
     <div mat-subheader>Images</div>
-    @for (repo of repositories; track repo) {
+    @for (repo of repositories_tags; track repo) {
         <mat-list-item>
             <!-- <div matListItemTitle>{{repo}}</div> -->
-            <a mat-list-item [routerLink]="['/details',repo]">
-                <span>{{repo}}</span>
+            <a mat-list-item [routerLink]="['/details',repo.name]">
+                <span>{{repo.name}}</span>
                 <mat-icon matListItemIcon matTooltip="Details">double_arrow</mat-icon>
+                <span>Tags {{repo.tags}}</span>
             </a>
         </mat-list-item>
         <mat-divider></mat-divider>
