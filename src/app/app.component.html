@@ -1,1 +1,22 @@
-<router-outlet />
+
+<mat-toolbar >
+    <mat-toolbar-row>
+        <h1>Docker Registry</h1>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav opened mode="side">
+        <mat-nav-list>
+            @for (item of menuItems; track item) {
+                <a mat-list-item [routerLink]="item.route">
+                    <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+                    <span>{{item.label}}</span>
+                </a>
+            }
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet />
+    </mat-sidenav-content>
+</mat-sidenav-container>
+

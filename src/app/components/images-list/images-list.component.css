@@ -1,0 +1,11 @@
+:host{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+mat-list{
+    width: 700px;
+    height: 100%;
+}

@@ -1,8 +1,13 @@
 <mat-list>
-    <div mat-subheader>Repositorios</div>
+    <div mat-subheader>Images</div>
     @for (repo of repositories; track repo) {
         <mat-list-item>
-            <div matListItemTitle>{{repo}}</div>
+            <!-- <div matListItemTitle>{{repo}}</div> -->
+            <a mat-list-item [routerLink]="['/details',repo]">
+                <span>{{repo}}</span>
+                <mat-icon matListItemIcon matTooltip="Details">double_arrow</mat-icon>
+            </a>
         </mat-list-item>
+        <mat-divider></mat-divider>
     }
 </mat-list>

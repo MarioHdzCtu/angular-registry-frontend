@@ -1,0 +1,29 @@
+.mat-sidenav-container{
+    height: 93vh;
+    
+}
+
+.mat-sidenav-content{
+    padding: 20px;
+}
+
+.mat-sidenav{
+    padding: 20px;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: lightgrey;
+    border-radius: 0;
+    width: 200px;
+}
+
+.mat-toolbar{
+    background-color: #1D63ED;
+    mat-toolbar-row{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: montserrat;
+        color: #E5F2FC;
+    }
+    
+}
