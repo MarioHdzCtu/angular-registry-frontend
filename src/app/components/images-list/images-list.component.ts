@@ -39,10 +39,10 @@ export class ImagesListComponent {
     this.imService.getAllImages().subscribe({
       next: (data: any) => {
         this.repositories = data['repositories'];
-        console.log(this.repositories);
         this.getImagesTags();
       },
       error: (err: any) => {
+        console.log(err);
         this.repositories = [];
       }
     }); 
