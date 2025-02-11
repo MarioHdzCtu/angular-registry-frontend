@@ -1,1 +1,19 @@
-<p>image-details works!</p>
+<p>Schema Version: {{manifest?.schemaVersion}}</p>
+<p>Media Type: {{manifest?.mediaType}}</p>
+@for (mani of manifest?.manifests; track mani) {
+    <mat-card appearance="outlined">
+        <mat-card-header>
+            <mat-card-title>Size {{mani.size}} MB</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            Digest: {{mani.digest}} <br> Media Type: {{mani.mediaType}}
+        </mat-card-content>
+        <mat-card-footer>
+            <mat-chip-set>
+                <mat-chip>Architecture: {{mani.platform.architecture}}</mat-chip>
+                <mat-chip>OS: {{mani.platform.os}}</mat-chip>
+            </mat-chip-set>
+        </mat-card-footer>
+    </mat-card>
+    <br>
+}

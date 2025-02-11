@@ -3,7 +3,7 @@
     @for (repo of repositories_tags; track repo) {
         <mat-list-item>
             <!-- <div matListItemTitle>{{repo}}</div> -->
-            <a mat-list-item [routerLink]="['/details',repo.name, repo.tags]">
+            <a mat-list-item [routerLink]="['/details',repo.name]" [state]="repo">
                 <span matListItemTitle>{{repo.name}}</span>
                 <mat-icon matListItemIcon matTooltip="Details">double_arrow</mat-icon>
                 <span matListItemLine>Tags: [{{repo.tags.join(', ')}}]</span>

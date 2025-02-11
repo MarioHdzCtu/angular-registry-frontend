@@ -5,11 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterLink } from '@angular/router';
 import {TooltipPosition, MatTooltipModule} from '@angular/material/tooltip';
-
-interface repoTags {
-  name: string
-  tags: string[]
-}
+import { RepoTags } from '../../interfaces/repo-tags';
 
 @Component({
   selector: 'app-images-list',
@@ -28,7 +24,7 @@ export class ImagesListComponent {
 
   imService = inject(ImagesService);
   repositories: string[] = [];
-  repositories_tags: repoTags[] = [];
+  repositories_tags: RepoTags[] = [];
 
   constructor() {
     this.getAllImages();
