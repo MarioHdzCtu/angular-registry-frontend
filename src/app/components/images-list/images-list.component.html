@@ -6,7 +6,7 @@
             <a mat-list-item [routerLink]="['/details',repo.name]">
                 <span matListItemTitle>{{repo.name}}</span>
                 <mat-icon matListItemIcon matTooltip="Details">double_arrow</mat-icon>
-                <span matListItemLine>Tags {{repo.tags.join(', ')}}</span>
+                <span matListItemLine>Tags: [{{repo.tags.join(', ')}}]</span>
             </a>
         </mat-list-item>
         <mat-divider></mat-divider>
