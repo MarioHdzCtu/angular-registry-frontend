@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IimageManifest } from '../../interfaces/image-manifest';
+import { ActivatedRoute } from '@angular/router';
+import { ImagesService } from '../../services/images.service';
 
 @Component({
   selector: 'app-image-details',
@@ -8,5 +11,15 @@ import { Component } from '@angular/core';
   styleUrl: './image-details.component.css'
 })
 export class ImageDetailsComponent {
+
+  constructor(private route: ActivatedRoute, private imService: ImagesService){
+    this.route.queryParamMap.subscribe(
+      params => {
+        const receivedData = params.get('tags')!;
+
+
+      }
+    )
+  }
 
 }
