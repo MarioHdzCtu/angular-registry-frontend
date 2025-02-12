@@ -9,5 +9,3 @@ RUN npm install -g @angular/cli
 RUN npm install
 
 CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4200", "--proxy-config", "./src/proxy.conf.json", "--configuration", "production"]
-
-EXPOSE 8000

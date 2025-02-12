@@ -1,27 +1,54 @@
-# AngularRegistryFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.3.
+# Docker Registry Frontend
 
-## Development server
+Angular App to graphically access the images in a private docker registry.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Appendix
 
-## Build
+This project was created with the intention of accessing the images stored in a custom private docker registry instance that is using the registry:2 image. As of today it lists the images and access the manifests for information like digest, architecture and OS of each of them.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Authors
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- [@MarioHdzCtu](https://github.com/MarioHdzCtu)
 
-## Running end-to-end tests
+##Deployment
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+`ng generate environments` in which you need two values like the following:
+`
+export const environment = {
+    docker_registry_url : docker registry IP address with port. [http](http://XXXX.XXXX.XXXX.XXXX:XXXX),
+    server_url: The server IP in which the Angular App is running, if using local can be used with localhost. [http](http://XXXX.XXXX.XXXX.XXXX:XXXX)
+};
+`
 
-## Further help
+Then create a src/proxy.conf.json with the following content.
+`
+{
+    "/v2/_catalog": {
+      "target": docker registry IP address with port. [http](http://XXXX.XXXX.XXXX.XXXX:XXXX),
+      "secure": false,
+      "changeOrigin": true
+    },
+    "/v2/*/tags/list":{
+      "target": docker registry IP address with port. [http](http://XXXX.XXXX.XXXX.XXXX:XXXX),
+      "secure": false,
+      "changeOrigin": true
+    },
+    "/v2/*/manifests/*":{
+      "target": docker registry IP address with port. [http](http://XXXX.XXXX.XXXX.XXXX:XXXX),
+      "secure": false,
+      "changeOrigin": true
+    }
+  }
+`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+To run the application can be done either with the Angular CLI command 
+
+`ng serve --proxy-config ./src/proxy.conf.json`
+
+Or using docker in a container with 
+
+`docker run -d -p4200:4200 --name your-conteiner-name your-image-build-name`
