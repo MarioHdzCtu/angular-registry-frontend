@@ -7,13 +7,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ImagesService {
 
-  private base_url = "http://localhost:4200";
+  private base_url = environment.server_url;
   http = inject(HttpClient);
 
   constructor() { }
 
   getAllImages() {
     // const images_url = this.base_url + "/v2/_catalog";
+    console.log(this.base_url)
     const images_url = `${this.base_url}/v2/_catalog`;
     return this.http.get(images_url,
       {headers: {
