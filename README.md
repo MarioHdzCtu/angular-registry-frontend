@@ -19,7 +19,6 @@ This project was created with the intention of accessing the images stored in a 
 `ng generate environments` in which you need two values like the following:
 `
 export const environment = {
-    docker_registry_url : docker registry IP address with port. [http](http://XXXX.XXXX.XXXX.XXXX:XXXX),
     server_url: The server IP in which the Angular App is running, if using local can be used with localhost. [http](http://XXXX.XXXX.XXXX.XXXX:XXXX)
 };
 `
