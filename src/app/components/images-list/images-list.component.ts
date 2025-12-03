@@ -41,7 +41,7 @@ export class ImagesListComponent {
         console.log(err);
         this.repositories = [];
       }
-    }); 
+    });
   }
 
   getImagesTags(){
@@ -52,7 +52,8 @@ export class ImagesListComponent {
           this.repositories_tags.push({
             "name":data['name'],
             tags: data['tags']
-          })
+          });
+          this.repositories_tags.sort((a, b) => a.name.localeCompare(b.name));
         },
         error: (err: any) => {
           console.error(err);
