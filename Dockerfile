@@ -1,7 +1,7 @@
 # ----------------------------------------------------------------------
 # Stage 1: Build the Angular App
 # ----------------------------------------------------------------------
-FROM node:lts-alpine as builder
+FROM node:lts-alpine AS builder
 WORKDIR /app
 COPY package.json package-lock.json ./
 
@@ -17,7 +17,7 @@ RUN npm run build -- --configuration=production
 # ----------------------------------------------------------------------
 # Stage 2: Serve with Nginx and dynamically inject config
 # ----------------------------------------------------------------------
-FROM nginx:stable-alpine as final
+FROM nginx:stable-alpine AS final
 
 # Determine the correct path: check your angular.json or your 'dist' folder
 # Example: /app/dist/your-project-name/browser
