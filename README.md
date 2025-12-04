@@ -18,15 +18,8 @@ This project was created with the intention of accessing the images stored in a 
 
 **Local deployment**
 
-Before deploying locally you need to update the src/environments/environment.ts file with the following structure:
 
-`
-export const environment = {
-    server_url: The server IP in which the Angular App is running, if using local can be used with localhost. [http](http://XXXX.XXXX.XXXX.XXXX:XXXX)
-};
-`
-
-Then create a src/proxy.conf.json with the following content.
+Create a src/proxy.conf.json with the following content to act as nginx reverse proxy.
 
 `
 {
@@ -50,18 +43,10 @@ Then create a src/proxy.conf.json with the following content.
 
 To run the application can be done with the Angular CLI command 
 
-`ng serve --proxy-config ./src/proxy.conf.json`
+`ng serve --proxy-config ./src/proxy.conf.json -c [development | staging | production]`
 
 
 **Docker deployment**
-
-Before deploying with docker you need to update the src/environments/environment.ts file with the following structure either manually or via CI tools:
-
-`
-export const environment = {
-    server_url: The server IP in which the Angular App is running, if using local can be used with localhost. [http](http://XXXX.XXXX.XXXX.XXXX:XXXX) - if using nginx port will be the nginx's listening port not the angular app port (eg. 80)
-};
-`
 
 Build image with normal command 
 
