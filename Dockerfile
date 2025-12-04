@@ -32,4 +32,4 @@ EXPOSE 80
 
 # The crucial CMD: Substitute environment variables in the config file at runtime,
 # then start Nginx. We list all required variables for substitution.
-CMD ["/bin/sh", "-c", "envsubst '$REGISTRY_URL $CATALOG_CONTEXT $TAGS_CONTEXT $MANIFESTS_CONTEXT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"]
+CMD ["/bin/sh", "-c", "envsubst '$REGISTRY_URL < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"]
