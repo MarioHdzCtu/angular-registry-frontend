@@ -1,0 +1,21 @@
+#Use this if you are using a PAAS platform (As dokploy) that uses its own reverse proxy
+
+# Stage 1: Build the Angular application
+FROM node:20-alpine as builder
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+# Run the build command
+RUN npm run build -- --output-path=./dist --configuration=production
+
+# Stage 2: Serve the static files (NO NGINX)
+# Use a simple, lightweight web server like Caddy or even a simple Express server
+# OR, the best approach for Dokploy:
+FROM alpine:latest
+# Choose a lightweight http server if necessary, or just rely on Dokploy's config
+# For simplicity, let's assume Dokploy expects the files to be in a certain path or uses its own light server.
+# For most deployment systems, you just need the files and let the platform serve them.
+# If Dokploy needs a specific internal path for static files, adjust this.
+WORKDIR /usr/share/nginx/html # A common path structure
+COPY --from=builder /app/dist/browser .
