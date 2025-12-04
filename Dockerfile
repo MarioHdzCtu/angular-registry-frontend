@@ -22,7 +22,7 @@ FROM nginx:stable-alpine as final
 # Determine the correct path: check your angular.json or your 'dist' folder
 # Example: /app/dist/your-project-name/browser
 # Replace '<your-project-name>' with the actual name of your project folder in 'dist'.
-COPY --from=builder /app/dist/<your-project-name>/browser /usr/share/nginx/html
+COPY --from=builder /app/dist/angular-registry-frontend/browser /usr/share/nginx/html
 
 # Copy the Nginx configuration TEMPLATE
 COPY nginx.conf.template /etc/nginx/conf.d/default.conf.template
