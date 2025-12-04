@@ -18,7 +18,7 @@ This project was created with the intention of accessing the images stored in a 
 
 **Local deployment**
 
-`ng generate environments` in which you need two values like the following:
+Before deploying locally you need to update the src/environments/environment.ts file with the following structure:
 
 `
 export const environment = {
@@ -48,15 +48,20 @@ Then create a src/proxy.conf.json with the following content.
   }
 `
 
-To run the application can be done either with the Angular CLI command 
+To run the application can be done with the Angular CLI command 
 
 `ng serve --proxy-config ./src/proxy.conf.json`
 
-Or using docker in a container with 
-
-`docker run -d -p4200:4200 --name your-container-name your-image-build-name`
 
 **Docker deployment**
+
+Before deploying with docker you need to update the src/environments/environment.ts file with the following structure either manually or via CI tools:
+
+`
+export const environment = {
+    server_url: The server IP in which the Angular App is running, if using local can be used with localhost. [http](http://XXXX.XXXX.XXXX.XXXX:XXXX) - if using nginx port will be the nginx's listening port not the angular app port (eg. 80)
+};
+`
 
 Build image with normal command 
 
@@ -69,3 +74,4 @@ Run command with environment variable for docker registry and binding port for n
 `
 docker run -d -p 80:80 -e REGISTRY_URL="<your-registry-IP-and-port>" --name <your-container-name>
 `
+
