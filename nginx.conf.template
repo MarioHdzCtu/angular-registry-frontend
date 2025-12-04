@@ -14,7 +14,7 @@ server {
     # ----------------------------------------------------
 
     # 1. Catalog Context
-    location ${CATALOG_CONTEXT} {
+    location /v2/_catalog {
         proxy_pass ${REGISTRY_URL};
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;

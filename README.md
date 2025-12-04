@@ -16,7 +16,10 @@ This project was created with the intention of accessing the images stored in a 
 
 ##Deployment
 
+**Local deployment**
+
 `ng generate environments` in which you need two values like the following:
+
 `
 export const environment = {
     server_url: The server IP in which the Angular App is running, if using local can be used with localhost. [http](http://XXXX.XXXX.XXXX.XXXX:XXXX)
@@ -24,6 +27,7 @@ export const environment = {
 `
 
 Then create a src/proxy.conf.json with the following content.
+
 `
 {
     "/v2/_catalog": {
@@ -50,4 +54,18 @@ To run the application can be done either with the Angular CLI command
 
 Or using docker in a container with 
 
-`docker run -d -p4200:4200 --name your-conteiner-name your-image-build-name`
+`docker run -d -p4200:4200 --name your-container-name your-image-build-name`
+
+**Docker deployment**
+
+Build image with normal command 
+
+`
+docker build -t <tag-your-image>
+`
+
+Run command with environment variable for docker registry and binding port for nginx.
+
+`
+docker run -d -p 80:80 -e REGISTRY_URL="<your-registry-IP-and-port>" --name <your-container-name>
+`
